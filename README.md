@@ -1,68 +1,157 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# node-challenge-london-mini-guide
 
-## Available Scripts
+In this challenge you are going to build a full stack application (server & client) shows number of hospitals, doctors, pharmacies and colleges in number of london boroughs.
 
-In the project directory, you can run:
+> for now there are data for only 3 cities.
 
-### `yarn start`
+- expected time: 4 - 20 hours
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## live version:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- check this website: https://london-mini-guide-challenge.netlify.app/
+- you don't need to know where the server is actually hosted.
 
-### `yarn test`
+## final project screenshot
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![project screenshot](https://i.imgur.com/Or1tNpV.png)
 
-### `yarn build`
+## data source
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- the data is provided to you in a folder `./data` which contains 3 files: `Harrow.json`, `Heathrow.json` and `stratford.json`.
+- each file in this format:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+  ```js
+  {
+      "pharmacies" : [
+          {
+              "name" :
+              "address":
+              "website":
+              "phone" :
+          }
+      ],
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+      "colleges" : [
+          {
+              "name" :
+              "address":
+              "website":
+              "phone" :
+          }
+      ],
 
-### `yarn eject`
+      "doctors" : [
+          {
+              "name" :
+              "address":
+              "website":
+              "phone" :
+          }
+      ],
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+      "hospitals" : [
+          {
+              "name" :
+              "address":
+              "website":
+              "phone" :
+          }
+      ]
+  }
+  ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- data source: https://www.yell.com/
+- data has been collected using `web scraping` technique, if you are more curious about this please check [this repo](https://github.com/ahmad-ali14/web-scraping---get-all-businesses-data-in-any-city) or [this youtube video](https://github.com/ahmad-ali14/web-scraping---get-all-businesses-data-in-any-city). and this is completely optional.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## server
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- you need to implement your server logic using `node.js`.
 
-## Learn More
+### server level 100
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- make a new express server and deploy it to `repl.it` or `heroku`.
+- on the route `/` respond with the routes you are planing to implement, example:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  ```js
+  {
+      "/pharmcies": "retruns an array of pharmacies in a specific area"
+      ...
+  }
+  ```
 
-### Code Splitting
+### server level 200
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- make your server working for only one city, example: `Stratford`
+- in this level you should have 4 routes:
 
-### Analyzing the Bundle Size
+  |    route    |                result                 |
+  | :---------: | :-----------------------------------: |
+  | /pharmacies | returns pharmacies list for stratford |
+  |  /colleges  |  returns colleges list for stratford  |
+  |  /doctors   |  returns doctors list for stratford   |
+  | /hospitals  | returns hospitals list for stratford  |
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### server level 300
 
-### Making a Progressive Web App
+- now make your city dynamic.
+- routes will change:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+|       route       |              result               |
+| :---------------: | :-------------------------------: |
+| /:city/pharmacies | returns pharmacies list for :city |
+|  /:city/colleges  |  returns colleges list for :city  |
+|  /:city/doctors   |  returns doctors list for :city   |
+| /:city /hospitals | returns hospitals list for :city  |
 
-### Advanced Configuration
+### server level 500
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- make all of that in one single route as:
 
-### Deployment
+|      route       |              result              |
+| :--------------: | :------------------------------: |
+| /:city/:category | returns :category list for :city |
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### server level 999
 
-### `yarn build` fails to minify
+- you have the full control over this level.
+- some suggestions:
+  - add new cities.
+  - add routes to add entries to our data.
+  - make sure that you are saving the entered values to the `json` file.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## client
+
+- you need to implement your client (or front-end) logic using `react.js`.
+
+### client level 100
+
+- display a title in the center.
+- display the cities dropdown menu.
+- display a categories' buttons.
+- display table with dummy data.
+
+### client level 200
+
+- make sure that selecting a city will update the state.
+- make sure that clicking on a specific category will activate it (distingush it from ither buttons).
+- show an error if user tried to choose a category before chosing a city
+
+![show an error if user tried to choose a category before chosing a city](https://i.imgur.com/vVPsMUe.png)
+
+### client level 300
+
+- make fetch request to your server on a specific city.
+- choosing any categorey will display the data specified to thar city in the table.
+- add loading spin while you're fetching your server.
+
+### client level 500
+
+- make city selection dynamic.
+- selecting a city then selecting a category should displays the data of the selected city in the table.
+
+### client level 999
+
+- you have the full control over this level.
+- some suggestions:
+  - add a little page contains some data about each city.
+  - form for adding more entries to the data.
