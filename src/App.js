@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
 
-const server_url = "http://localhost:5000";
+const server_url = "https://london-mini-guide-server--ahmadali5.repl.co";
 
 function App() {
   const [isVisible, setIsVisible] = useState({
