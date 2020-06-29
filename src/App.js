@@ -134,7 +134,7 @@ function App() {
       <select style={{ display: 'inline' }} id="citySelector" autoFocus="-1" value={city} onChange={(e) => { console.log('e value', e.target.value); setCity(e.target.value); }}>
         <option id="defaultcitySelection" value="no-city" defaultValue='' >select a city </option>
         <option value='Harrow'>Harrow</option>
-        <option value="stratford%2C+east+london" >Stratford</option>
+        <option value="stratford" >Stratford</option>
         <option value='heathrow'>Heathrow</option>
       </select>
 
